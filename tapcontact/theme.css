@@ -1,0 +1,8 @@
+:root{--navy:#163a43;--teal:#167c79;--mint:#e8f4ef;--gold:#dda744;--ink:#263238;--cream:#f7f6f2}
+body{background:radial-gradient(circle at 85% 0%,#d9f1eb 0,transparent 30%),linear-gradient(180deg,#ffffff 0,#f7f6f2 70%);color:var(--ink)}
+.hero{max-width:760px;padding:28px 22px;border-radius:28px;background:linear-gradient(135deg,var(--navy),#245864);color:#fff;box-shadow:0 18px 45px rgba(22,58,67,.18)}
+.logoMark{color:#e6e8e8}.logo{color:#f4f5f4}.eyebrow{color:#efbf63;font-weight:800}h1{color:#fff}.intro{color:#dce9e8}
+.pack.selected{border:2px solid var(--teal);box-shadow:0 12px 28px rgba(22,124,121,.14)}
+.pack.featured{border:2px solid var(--gold);box-shadow:0 12px 30px rgba(221,167,68,.14)}
+.pack .tag{background:var(--gold);color:#263238}.pack b{color:var(--navy)}
+.panel{border-color:#dbe5e2}.cta{border-color:var(--teal);background:var(--teal)}.reviewBox{background:var(--mint)}.tick{background:var(--teal)}
