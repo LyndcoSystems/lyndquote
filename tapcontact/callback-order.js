@@ -14,12 +14,17 @@ function val(id){return $(id).value.trim()}
 function normaliseWebsite(v){
  const s=String(v||"").trim();
  if(!s)return "";
- if(/^https?:\/\//i.test(s))return s;
- return "https://"+s.replace(/^\/+/, "");
+ if(/\s/.test(s))return null;
+ const candidate=/^https?:\/\//i.test(s)?s:"https://"+s.replace(/^\/+/, "");
+ try{
+  const u=new URL(candidate);
+  if(!["http:","https:"].includes(u.protocol)||!u.hostname.includes(".")||u.username||u.password)return null;
+  return u.href;
+ }catch{return null}
 }
 function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
 function validate(){
- error.classList.add("hidden");
+ error.classList.add("hidden"); if(normaliseWebsite(val("website"))===null)return "Please enter a valid website, for example www.yourbusiness.co.uk.";
  if(!val("business")||!val("email")||!val("email2")||!val("address1")||!val("town")||!val("postcode"))return "Please complete all required fields.";
  if(val("email").toLowerCase()!==val("email2").toLowerCase())return "The two email addresses do not match.";
  if(!val("landline")&&!val("emergency")&&!val("whatsapp")&&!val("website"))return "Please provide at least one contact route for your customers.";
@@ -38,6 +43,7 @@ $("reviewBtn").addEventListener("click",()=>{
 });
 $("editBtn").addEventListener("click",()=>{reviewStep.classList.add("hidden");formStep.classList.remove("hidden")});
 $("placeBtn").addEventListener("click",async()=>{
+ const validation=validate();if(validation){showError(validation);return}
  const btn=$("placeBtn");btn.disabled=true;btn.textContent="Submitting request…";error.classList.add("hidden");
  const body={pack_size:selected,business_name:val("business"),website:normaliseWebsite(val("website")),landline:val("landline"),emergency_phone:val("emergency"),whatsapp:val("whatsapp"),email:val("email"),email_confirm:val("email2"),address1:val("address1"),address2:val("address2"),town:val("town"),postcode:val("postcode")};
  try{

@@ -223,6 +223,16 @@ $('backupInput').addEventListener('change',async e=>{
 buildCustomUI();setEdition('standard');renderHistory();
 // PWA registration only works from HTTPS or localhost, not file://.
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', {scope:'./'}).catch(err => console.warn('Offline installation unavailable:',err)));
+  window.addEventListener('load', async () => {
+    try {
+      const rootScope=new URL('/',location.href).href;
+      const registrations=await navigator.serviceWorker.getRegistrations();
+      for(const registration of registrations){
+        const script=(registration.active||registration.waiting||registration.installing)?.scriptURL;
+        if(registration.scope===rootScope&&script===new URL('/sw.js',location.href).href)await registration.unregister();
+      }
+      await navigator.serviceWorker.register('./sw.js', {scope:'./'});
+    }catch(err){console.warn('Offline installation unavailable:',err)}
+  });
 }
 </script></body></html>

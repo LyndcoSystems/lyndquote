@@ -1,19 +1,19 @@
 {
   "name": "LyndQuote by Lyndco Systems",
   "short_name": "LyndQuote",
-  "description": "Offline-capable mobile job estimating and profit reviews",
-  "start_url": "./index.html",
-  "scope": "./",
+  "description": "Mobile job estimating and profit reviews",
+  "id": "/lyndquote/index.html",
+  "start_url": "/lyndquote/index.html",
+  "scope": "/lyndquote/",
   "display": "standalone",
   "background_color": "#f2f5f4",
   "theme_color": "#142b34",
   "icons": [
     {
-      "src": "./icon.svg",
+      "src": "/lyndquote/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     }
-  ],
-  "id": "./"
+  ]
 }
