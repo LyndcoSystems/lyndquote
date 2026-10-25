@@ -38,12 +38,12 @@ $("reviewBtn").addEventListener("click",()=>{
 });
 $("editBtn").addEventListener("click",()=>{reviewStep.classList.add("hidden");formStep.classList.remove("hidden")});
 $("placeBtn").addEventListener("click",async()=>{
- const btn=$("placeBtn");btn.disabled=true;btn.textContent="Creating order…";error.classList.add("hidden");
+ const btn=$("placeBtn");btn.disabled=true;btn.textContent="Submitting request…";error.classList.add("hidden");
  const body={pack_size:selected,business_name:val("business"),website:normaliseWebsite(val("website")),landline:val("landline"),emergency_phone:val("emergency"),whatsapp:val("whatsapp"),email:val("email"),email_confirm:val("email2"),address1:val("address1"),address2:val("address2"),town:val("town"),postcode:val("postcode")};
  try{
   const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-  const d=await r.json();if(!r.ok)throw new Error(d.error||"Could not place order");
+  const d=await r.json();if(!r.ok)throw new Error(d.error||"Could not submit request");
   reviewStep.classList.add("hidden");doneStep.classList.remove("hidden");$("orderRef").textContent=d.order_code;
- }catch(e){showError(e.message);btn.disabled=false;btn.textContent="Place order"}
+ }catch(e){showError(e.message);btn.disabled=false;btn.textContent="Submit order request"}
 });
 })();
