@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="index,follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://vikzpaetwkkztehumuqe.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; img-src 'self' data:; upgrade-insecure-requests">
+  <title>Lyndco Systems — HelpPoint — Stay within reach.</title>
+  <meta name="description" content="NFC contact stickers for trades. One tap gives your customers a simple route back to your business.">
+  <link rel="stylesheet" href="/tapcontact/callback-order.css">
+  <link rel="stylesheet" href="/tapcontact/theme.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="logoMark">&lt;/&gt;</div>
+      <div class="logo">LYNDCO <span>SYSTEMS</span></div>
+      <p class="eyebrow">HELPPOINT · NFC CONTACT STICKERS FOR TRADES</p>
+      <h1>HelpPoint.</h1>
+      <p class="intro">Need help? Tap here. </p><p class="intro">Leave a simple contact point with every customer. When they need you again, they tap the sticker and choose how to get in touch.</p>
+    </header>
+
+    <section class="packs" aria-label="Sticker bundles">
+      <button class="pack" data-pack="25"><span class="packName">Starter</span><strong>25</strong><span>stickers</span><b>£99</b><small>£3.96 each</small></button>
+      <button class="pack featured" data-pack="50"><span class="tag">POPULAR</span><span class="packName">Popular</span><strong>50</strong><span>stickers</span><b>£149</b><small>£2.98 each</small></button>
+      <button class="pack" data-pack="100"><span class="packName">Pro</span><strong>100</strong><span>stickers</span><b>£229</b><small>£2.29 each</small></button>
+      <button class="pack" data-pack="200"><span class="packName">Max</span><strong>200</strong><span>stickers</span><b>£399</b><small>£2.00 each</small></button>
+    </section>
+    <p class="vat">Order requests are not payments. We will confirm your order and payment arrangements before fulfilment.</p><p class="vat">Prices exclude VAT. Programming and standard UK postage included.</p>
+
+    <section id="checkout" class="panel hidden">
+      <div id="formStep">
+        <h2>Your business details</h2>
+        <p class="muted">Enter these once. They become the contact menu your customer sees after tapping.</p>
+        <div class="fields">
+          <label>Business Name<input id="business" maxlength="120" required></label>
+          <label>Website<input id="website" type="url" placeholder="https://yourbusiness.co.uk"></label>
+          <label>Landline<input id="landline" inputmode="tel"></label>
+          <label>Customer Emergency Contact Number<input id="emergency" inputmode="tel"></label>
+          <label>WhatsApp<input id="whatsapp" inputmode="tel"></label>
+          <label>Email<input id="email" type="email" autocomplete="email" required></label>
+          <label>Confirm Email<input id="email2" type="email" autocomplete="off" required></label>
+        </div>
+        <h3>Delivery address</h3>
+        <div class="fields">
+          <label>Address line 1<input id="address1" autocomplete="address-line1" required></label>
+          <label>Address line 2<input id="address2" autocomplete="address-line2"></label>
+          <label>Town / City<input id="town" autocomplete="address-level2" required></label>
+          <label>Postcode<input id="postcode" autocomplete="postal-code" required></label>
+        </div>
+        <button id="reviewBtn" class="cta">Check my details</button>
+      </div>
+
+      <div id="reviewStep" class="hidden">
+        <h2>Check your information</h2>
+        <p class="muted">Please check carefully. This information will be programmed into your Lyndco contact page.</p>
+        <div id="reviewBox" class="reviewBox"></div>
+        <div class="buttonRow">
+          <button id="editBtn" class="secondary">Edit</button>
+          <button id="placeBtn" class="cta">Submit order request</button>
+        </div>
+        <p class="fine">No programming link is shown here. Lyndco creates that automatically after the order is submitted.</p>
+      </div>
+
+      <div id="doneStep" class="hidden done">
+        <div class="tick">✓</div>
+        <h2>Request received</h2>
+        <p>Your request reference is <strong id="orderRef"></strong>.</p>
+        <p class="muted">Your details have been submitted. This is not a payment confirmation; Lyndco will confirm the next steps.</p>
+      </div>
+      <p id="error" class="error hidden"></p>
+    </section>
+
+    <footer>LYNDCO SYSTEMS · TAP. CONTACT. SORTED.</footer>
+  </main>
+  <script src="/tapcontact/callback-order.js" defer></script>
+</body>
+</html>
